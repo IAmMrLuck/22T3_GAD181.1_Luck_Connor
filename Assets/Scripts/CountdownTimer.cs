@@ -4,44 +4,49 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class CountdownTimer : MonoBehaviour
+namespace ConaLuk
 {
-    [SerializeField] private float TimeLeft;
-    [SerializeField] private bool TimerOn = false;
-    [SerializeField] private TMP_Text TimerText;
 
-    void Start()
+    public class CountdownTimer : MonoBehaviour
     {
-        TimerOn = true;
-    }
+        [SerializeField] private float TimeLeft;
+        [SerializeField] private bool TimerOn = false;
+        [SerializeField] private TMP_Text TimerText;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (TimerOn)
+        void Start()
+        {   //turns the timer on at the start of the game 
+            TimerOn = true;
+        }
+
+        // Update is called once per frame
+        void Update()
         {
-            if (TimeLeft > 0)
+            if (TimerOn)
             {
-                TimeLeft -= Time.deltaTime;
-                updateTimer(TimeLeft);
-            }
-            else
-            {
-                TimeLeft = 0;
-                TimerOn = false;
+                if (TimeLeft > 0)
+                {
+                    TimeLeft -= Time.deltaTime;
+                    updateTimer(TimeLeft); // calls the below method
+                }
+                else
+                {
+                    TimeLeft = 0;
+                    TimerOn = false;
+                }
             }
         }
-    }
 
-    void updateTimer (float currentTime)
-    {
-        currentTime += 1;
+        void updateTimer(float currentTime)
+        {
 
-        float minutes = Mathf.FloorToInt(currentTime / 60);
-        float seconds = Mathf.FloorToInt(currentTime % 60);
+            currentTime += 1;
 
-        TimerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+            float minutes = Mathf.FloorToInt(currentTime / 60);
+            float seconds = Mathf.FloorToInt(currentTime % 60);
+
+            TimerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
 
 
+        }
     }
 }

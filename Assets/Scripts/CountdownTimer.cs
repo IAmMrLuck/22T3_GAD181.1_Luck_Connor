@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace ConaLuk
 {
@@ -34,6 +35,11 @@ namespace ConaLuk
                     TimerOn = false;
                 }
             }
+
+            if(TimeLeft <= 0)
+            {
+                SceneManager.LoadScene("End Game");
+            }
         }
 
         void updateTimer(float currentTime)
@@ -46,7 +52,8 @@ namespace ConaLuk
 
             TimerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
 
-
         }
+
+        
     }
 }

@@ -23,8 +23,7 @@ namespace ConaLuk
             {
                 punchCounter++;
             }
-            Debug.Log("Punched " + punchCounter + " times");
-
+            
             PunchCounterText.text = punchCounter.ToString();
         }
 

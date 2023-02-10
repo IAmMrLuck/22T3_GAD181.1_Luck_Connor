@@ -19,9 +19,8 @@ namespace ConaLuk
             TimerOn = true;
         }
 
-        // Update is called once per frame
         void Update()
-        {
+        { //counts the timer down to zero
             if (TimerOn)
             {
                 if (TimeLeft > 0)
@@ -38,6 +37,7 @@ namespace ConaLuk
 
             if(TimeLeft <= 0)
             {
+                // loads the end game scene once the trimer hits zero
                 SceneManager.LoadScene("End Game");
             }
         }

@@ -8,23 +8,39 @@ namespace ConaLuk
 
     public class PunchCounter : MonoBehaviour
     {
-        [SerializeField] private TMP_Text PunchCounterText;
+        [SerializeField] private TMP_Text redCounterText;
+        [SerializeField] private TMP_Text blueCounterText;
 
-        [SerializeField] private int punchCounter = 0;
+        [SerializeField] private int redCounter = 0;
+        [SerializeField] private int blueCounter = 0;
 
         private void Update()
         { // adds 1 point to counter each time the button is pressed
 
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                punchCounter++;
+                redCounter++;
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                punchCounter++;
+                redCounter++;
             }
-            
-            PunchCounterText.text = punchCounter.ToString();
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                blueCounter++;
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                blueCounter++;
+            }
+
+            redCounterText.text = redCounter.ToString();
+            blueCounterText.text = blueCounter.ToString();
+
+
+            PlayerPrefs.SetString("redScore", redCounterText.text);
+            PlayerPrefs.SetString("blueScore", blueCounterText.text);
         }
 
         
